@@ -1,0 +1,42 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:${server.port}/eureka/
+
+spring:
+  profiles:
+    active: @activeProfile@
+  cloud:
+    config:
+      discovery:
+        enabled: true
+
+---
+spring:
+  profiles: local
+
+eureka:
+  instance:
+    preferIpAddress: true
+
+---
+
+spring:
+  profiles: docker
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:${server.port}/eureka/
+
