@@ -1,4 +1,4 @@
-FROM registry.aliyuncs.com/leansw/discovery-service-dep
+FROM registry.aliyuncs.com/leansw/discovery-service:dep
 
 VOLUME /tmp
 ADD discovery-service-1.0-SNAPSHOT.jar discovery-service.jar
