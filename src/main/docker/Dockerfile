@@ -1,6 +1,4 @@
-FROM java:8-alpine
-RUN apk add --no-cache bash && \
-    apk add --no-cache curl
+FROM registry.aliyuncs.com/leansw/java-base
 EXPOSE 8761
 VOLUME /tmp
 ENTRYPOINT ["java","-Xmx512m","-Djava.security.egd=file:/dev/./urandom","-cp","$JAVA_HOME/lib/*:/lean/java/lib/*:/discovery-service.jar","org.thoughtworks.lean.discovery.Application"]
