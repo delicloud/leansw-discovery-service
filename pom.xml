@@ -6,22 +6,19 @@
 
     <groupId>com.thoughtworks.lean</groupId>
     <artifactId>discovery-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Brixton.SR1</version>
+        <groupId>com.thoughtworks.lean</groupId>
+        <artifactId>leansw-service-parent</artifactId>
+        <version>1.0</version>
     </parent>
 
     <properties>
         <docker.image.prefix>leansw</docker.image.prefix>
     </properties>
 
-
-
     <repositories>
-
         <repository>
             <id>mongodo repository</id>
             <url>https://oss.sonatype.org/content/repositories/releases/</url>
@@ -72,24 +69,11 @@
         </pluginRepository>
     </pluginRepositories>
     
-
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -171,6 +155,5 @@
             </properties>
         </profile>
     </profiles>
-
 
 </project>
