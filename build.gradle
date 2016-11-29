@@ -1,0 +1,82 @@
+defaultTasks 'clean', 'build'
+
+buildscript {
+
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath group: 'org.sonarsource.scanner.gradle', name: 'sonarqube-gradle-plugin', version: '1.2'
+        classpath group: 'net.ltgt.gradle', name: 'gradle-apt-plugin', version: '0.6'
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.4.0.RELEASE'
+        classpath group: 'org.springframework.build.gradle', name: 'propdeps-plugin', version: '0.0.7'
+        classpath group: 'se.transmode.gradle', name: 'gradle-docker', version: '1.2'
+        //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+group = 'com.thoughtworks.lean'
+version = '1.1-SNAPSHOT'
+
+description = """"""
+
+bootRepackage {
+    mainClass = 'org.thoughtworks.lean.discovery.Application'
+}
+
+springBoot {
+    mainClass = 'org.thoughtworks.lean.discovery.Application'
+    executable = true
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'eureka-server'
+    version = '0.1.0'
+}
+
+
+
+repositories {
+        
+     maven { url "http://repo1.maven.org/maven2" }
+     maven { url "http://repository.apache.org/snapshots/" }
+     maven { url "http://repo1.maven.org/maven2/" }
+     maven { url "http://repo2.maven.org/maven2/" }
+     maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+     maven { url "http://clojars.org/repo" }
+     maven { url "http://jcenter.bintray.com" }
+     maven { url "http://repo.spring.io/libs-snapshot-local" }
+     maven { url "http://repo.spring.io/libs-milestone-local" }
+     maven { url "http://repo.spring.io/libs-milestone" }
+     maven { url "http://repo.spring.io/libs-release-local" }
+}
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka-server', version:'1.2.0.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version:'1.2.0.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka', version:'1.2.0.RELEASE'
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'1.4.0.RELEASE') {
+exclude(module: 'commons-logging')
+    }
+
+}
+
+
+clean {
+    delete "target"
+}
+
+task stage(dependsOn: 'bootRepackage') {
+}

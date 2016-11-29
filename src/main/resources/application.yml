@@ -11,8 +11,8 @@ eureka:
       defaultZone: http://localhost:${server.port}/eureka/
 
 spring:
-  profiles:
-    active: @activeProfile@
+#  profiles:
+#    active: @activeProfile@
   cloud:
     config:
       discovery:
