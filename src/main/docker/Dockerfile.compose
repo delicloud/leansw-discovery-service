@@ -1,0 +1,5 @@
+FROM maven:3.3.9-jdk-8-alpine
+EXPOSE 8761
+VOLUME /tmp
+WORKDIR /src/
+COPY . /src/
