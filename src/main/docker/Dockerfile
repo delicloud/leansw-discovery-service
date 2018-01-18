@@ -1,8 +1,4 @@
-FROM registry.aliyuncs.com/leansw/java-base
+FROM openjdk:8-jre-alpine
 EXPOSE 8761
-VOLUME /tmp
-ENTRYPOINT ["java","-Xmx512m","-Djava.security.egd=file:/dev/./urandom","-cp","$JAVA_HOME/lib/*:/lean/java/lib/*:/discovery-service.jar","org.thoughtworks.lean.discovery.Application"]
-COPY lib /lean/java/lib
-ADD discovery-service-*-SNAPSHOT.jar /discovery-service.jar
-RUN touch /discovery-service.jar && \
-    touch /lean/java/lib/*.jar
+ADD *.jar /discovery-service.jar
+CMD java -Xmx512m -Djava.security.egd=file:/dev/./urandom -jar /discovery-service.jar
